@@ -17,6 +17,12 @@ jobs:
       - name: Make scripts executable
         run: chmod +x *.sh
 
+      - name: Prepare test environment
+        run: |
+          touch output.txt
+          mkdir -p /home/it26120030/lab1
+          touch /home/it26120030/lab1/output.txt
+
       - name: Test hello script
         run: ./hello.sh
 
@@ -31,6 +37,7 @@ jobs:
           echo "CI/CD Pipeline Report" > pipeline_report.txt
           echo "Pipeline executed successfully." >> pipeline_report.txt
           echo "Scripts tested successfully." >> pipeline_report.txt
+          echo "Date: $(date)" >> pipeline_report.txt
 
       - name: Upload pipeline report
         uses: actions/upload-artifact@v4
