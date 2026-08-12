@@ -18,10 +18,13 @@ jobs:
         run: chmod +x *.sh
 
       - name: Prepare test environment
+        run: touch output.txt
+
+      - name: Fix script output path for CI
         run: |
-          touch output.txt
-          mkdir -p /home/it26120030/lab1
-          touch /home/it26120030/lab1/output.txt
+          sed -i 's|/home/it26120030/lab1/output.txt|output.txt|g' hello.sh
+          sed -i 's|/home/it26120030/lab1/output.txt|output.txt|g' backup.sh
+          sed -i 's|/home/it26120030/lab1/output.txt|output.txt|g' verify.sh
 
       - name: Test hello script
         run: ./hello.sh
