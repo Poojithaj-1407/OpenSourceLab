@@ -1,0 +1,39 @@
+name: CI Pipeline
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  test-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x *.sh
+
+      - name: Test hello script
+        run: ./hello.sh
+
+      - name: Test backup script
+        run: ./backup.sh
+
+      - name: Run verification script
+        run: ./verify.sh
+
+      - name: Generate pipeline report
+        run: |
+          echo "CI/CD Pipeline Report" > pipeline_report.txt
+          echo "Pipeline executed successfully." >> pipeline_report.txt
+          echo "Scripts tested successfully." >> pipeline_report.txt
+
+      - name: Upload pipeline report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-report
+          path: pipeline_report.txt
