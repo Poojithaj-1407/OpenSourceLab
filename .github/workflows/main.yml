@@ -37,6 +37,19 @@ jobs:
       - name: Run verification script
         run: ./verify.sh
 
+      - name: Run system monitoring
+        run: |
+          chmod +x log_monitor.sh
+          ./log_monitor.sh
+          test -f system_report.txt
+
+      - name: Generate monitoring summary
+        run: |
+          echo "Automated Monitoring Report" > monitoring_summary.txt
+          echo "Monitoring script executed successfully." >> monitoring_summary.txt
+          echo "System report generated successfully." >> monitoring_summary.txt
+          echo "Date: $(date)" >> monitoring_summary.txt
+
       - name: Generate pipeline report
         run: |
           echo "CI/CD Pipeline Report" > pipeline_report.txt
@@ -49,3 +62,11 @@ jobs:
         with:
           name: pipeline-report
           path: pipeline_report.txt
+
+      - name: Upload monitoring report
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitoring-report
+          path: |
+            system_report.txt
+            monitoring_summary.txt
