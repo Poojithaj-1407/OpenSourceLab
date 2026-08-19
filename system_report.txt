@@ -1,0 +1,29 @@
+====================================
+ AUTOMATED SYSTEM MONITORING REPORT
+====================================
+
+Date and Time:
+Wednesday 19 August 2026 09:54:42 AM IST
+
+Current User:
+it26120030
+
+System Uptime:
+ 09:54:42 up 6 min,  1 user,  load average: 0.48, 0.57, 0.30
+
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           1.6G  2.6M  1.6G   1% /run
+/dev/nvme0n1p7   21G   18G  2.0G  90% /
+tmpfs           7.7G     0  7.7G   0% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+efivarfs        438K  283K  151K  66% /sys/firmware/efi/efivars
+/dev/nvme0n1p1  480M  117M  364M  25% /boot/efi
+tmpfs           1.6G  108K  1.6G   1% /run/user/2091
+
+Memory Usage:
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       2.5Gi        10Gi       569Mi       2.1Gi        12Gi
+Swap:          2.0Gi          0B       2.0Gi
+
+Monitoring completed successfully.
